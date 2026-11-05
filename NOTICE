@@ -1,0 +1,33 @@
+Hedera MCP Server
+Copyright 2026 Hedera Hashgraph, LLC
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+--------------------------------------------------------------------------------
+Third-party software
+--------------------------------------------------------------------------------
+
+This product depends on WalletConnect and Reown packages that are not covered
+by the Apache License:
+
+  WalletConnect Community License Agreement
+  (licenses/WALLETCONNECT-COMMUNITY-LICENSE.md):
+    @walletconnect/sign-client, @walletconnect/core, @walletconnect/types,
+    @walletconnect/utils, @walletconnect/universal-provider,
+    @walletconnect/pay, @reown/walletkit
+
+  Reown Community License Agreement
+  (licenses/REOWN-COMMUNITY-LICENSE.md):
+    @reown/appkit and @reown/appkit-*
+
+The LICENSE.md shipped inside each installed package governs that package.
+
+Portions © 2025 Reown, Inc. All Rights Reserved
+
+dist/vendor/hedera-wallet-connect.cjs bundles @hashgraph/hedera-wallet-connect,
+Copyright (C) 2023 Hedera Hashgraph, LLC, licensed under the Apache License,
+Version 2.0.
+
+The wallet sign-in page bundles the Montserrat typeface, © 2011 The Montserrat
+Project Authors, licensed under the SIL Open Font License 1.1 (see
+assets/fonts/OFL.txt).

@@ -1,0 +1,10 @@
+dist/
+node_modules/
+coverage/
+
+# Generated build artefact (gitignored): a single ~75 KB base64 string literal. Prettier would
+# rewrite it on every run for nothing. Produced by `npm run build:fonts`.
+src/web/brand/fonts.generated.ts
+
+# Third-party licence texts, copied verbatim from the packages. Do not reformat.
+licenses/

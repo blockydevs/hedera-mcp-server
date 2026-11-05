@@ -1,0 +1,13 @@
+dist/
+node_modules/
+*.dxt
+dxt-dist/
+.env
+.DS_Store
+.local/
+.hedera-mcp-store/
+walletconnect.db*
+
+# Generated from assets/fonts/ by `npm run build:fonts`, which `build` and `pretest` both run.
+# It is a build artefact, not source: the woff2 in assets/fonts/ are the source of truth.
+src/web/brand/fonts.generated.ts

@@ -1,0 +1,91 @@
+{
+  "name": "@hedera/mcp",
+  "version": "1.0.0",
+  "homepage": "https://github.com/blockydevs/hedera-mcp-server#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockydevs/hedera-mcp-server.git"
+  },
+  "description": "MCP server for the Hedera network over Streamable HTTP, with optional non-custodial wallet signing via WalletConnect",
+  "type": "module",
+  "bin": {
+    "hedera-mcp-http": "dist/main.js"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "NOTICE",
+    "licenses/",
+    "assets/fonts/OFL.txt",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "start": "node dist/main.js --agent-mode=returnBytes",
+    "build": "npm run build:fonts && tsc && npm run build:vendor && node -e \"require('fs').chmodSync('dist/main.js', '755')\"",
+    "clean": "rm -rf dist src/web/brand/fonts.generated.ts",
+    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prettier": "prettier './**/*.{js,ts,md,html,css}' --write",
+    "prettier-check": "prettier './**/*.{js,ts,md,html,css}' --check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:vendor": "node scripts/build-vendor.mjs",
+    "build:fonts": "node scripts/build-fonts.mjs",
+    "pretest": "npm run build:fonts && npm run build:vendor",
+    "typeorm": "typeorm -d dist/database/typeorm.config.js",
+    "migration:run": "npm run build && npm run typeorm migration:run",
+    "migration:revert": "npm run build && npm run typeorm migration:revert",
+    "migration:generate": "npm run build && typeorm migration:generate src/database/migrations/$npm_config_name -d dist/database/typeorm.config.js",
+    "typecheck": "npm run build:fonts && tsc --noEmit -p tsconfig.eslint.json"
+  },
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
+  "dependencies": {
+    "@hashgraph/hedera-agent-kit": "^4.2.0",
+    "@hashgraph/hedera-wallet-connect": "2.1.3",
+    "@hiero-ledger/sdk": "2.90.1",
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@nestjs/common": "^12.3.2",
+    "@nestjs/core": "^12.3.2",
+    "@nestjs/platform-express": "^12.3.2",
+    "@walletconnect/sign-client": "2.26.0",
+    "dotenv": "17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.1",
+    "pg": "^8.22.0",
+    "qrcode": "^1.5.4",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "^0.3.31",
+    "zod": "^4.6.7"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "hedera"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.13.4",
+    "@types/qrcode": "^1.5.6",
+    "@types/supertest": "^7.2.1",
+    "@walletconnect/types": "^2.23.10",
+    "better-sqlite3": "^12.11.1",
+    "esbuild": "^0.28.1",
+    "eslint": "^9.39.5",
+    "prettier": "^3.5.1",
+    "supertest": "^7.2.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.12"
+  },
+  "overrides": {
+    "@hiero-ledger/sdk": "$@hiero-ledger/sdk",
+    "ws": "^8.18.3",
+    "zod": "$zod"
+  }
+}

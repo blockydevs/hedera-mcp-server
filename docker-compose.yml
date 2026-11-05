@@ -1,0 +1,22 @@
+# Local Postgres for the OAuth/session store. Not for production.
+#   docker compose up -d
+#   DATABASE_URL="postgresql://hedera_mcp:hedera_mcp@localhost:5433/hedera_mcp"
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: hedera_mcp
+      POSTGRES_PASSWORD: hedera_mcp
+      POSTGRES_DB: hedera_mcp
+    ports:
+      - '5433:5432'
+    volumes:
+      - hedera_mcp_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U hedera_mcp']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  hedera_mcp_pg:
